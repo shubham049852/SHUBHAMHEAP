@@ -1,0 +1,115 @@
+#include<iostream>
+#include<math.h>
+using namespace std;
+class heap
+{
+ public:
+int ar[50],s,c;
+void heapinckey(int ar[],int b,int e)
+ {
+ 	int d=floor(b/2);
+ 	a[b]=e;
+ 	while(b>1&&a[d]<a[b])
+ 	{
+ 		swap(ar[b],ar[d]);
+ 		b=floor(b/2);
+ 		d=floor(b/2);
+	 }
+ }
+ void insert(int ar[],int v,int s)
+  {
+  	ar[s]=-100;
+  	heapinckey(ar,s,v);
+  }
+  void maxheapify(int ar[],int ele,int s)
+   {
+   	 int l,r,m;
+     l=2*ele;
+     r=2*ele+1;
+     m=ele;
+     if(l<s&&ar[ele]<ar[l])
+      {
+      	m=l;
+	  }
+	if(r<s&&ar[m]<ar[r])
+	 {
+	 	m=r;
+	 }
+    if(m!=ele)
+     {
+     	swap(ar[m],ar[ele]);
+     	maxheapify(ar,m,s);
+	 }
+   }
+   int maximumheap(int ar[])
+    {
+      return ar[1];	
+	}
+
+ void getmaxheap(int ar[],int s)
+  {
+  	if(s=0)
+  	 {
+  	         cout<<" no element in the tree";
+   }
+    else
+     {
+     	ar[1]=ar[s];
+     	s--;
+     	maxheapify(ar,1,s);
+    }
+	 }
+
+  void builtheap(int ar[],int s)
+   {
+   	 int j=floor(s/2);
+   	 for(int i=j;i>=1;i--)
+   	  {
+   	  	maxheapify(ar,1,s);
+	   }
+    }	 
+}; 
+int main()
+ {
+            clrscr();
+	int ch,i,k,s;
+	heap y;
+	int ar[s];
+	do
+	 {
+	  cout<<"\n 1.Increase the key value \n 2.Insert the element  \n 3.Maximum value \n 4.Get maximum value \n "<<endl;
+	  cout<<"Enter your choice";
+	  cin>>ch;
+	  switch(ch)
+	   {
+	    case 1:
+		    cout<<"Enter the key value";
+		    cin>>i;
+		    cout<<"How much key is to be increased";
+		    cin>>k;
+		    y.heapinckey(ar,i,k);
+		    break;
+	    case 2:
+		    cout<<"Enter the value to be inserted";
+	        cin>>k;
+	        s++;
+	        y.insert(ar,k,s);
+	        break;
+	    case 3:
+		    cout<<"Maximum element in heap"<<endl;
+		    y.maximumheap(a);
+		    cout<<endl;
+		    break;
+	    case 4:
+		    cout<<"Get maximum element from heap\n"<<endl;
+		    y.getmaxheap(a,s);
+		    cout<<endl;
+		    break;
+	    default: cout<<"invalid choice"<<endl;
+	     }
+	      }while(ch!=0);
+     getch();
+     return 0;
+ }
+
+

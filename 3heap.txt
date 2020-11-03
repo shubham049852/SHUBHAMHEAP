@@ -1,0 +1,112 @@
+#include<iostream>
+#include<math.h>
+using namespace std;
+class heap
+{
+ public:
+int ar[50],s,c;
+void heapdeckey(int ar[],int b,int e)
+ {
+ 	int g=floor(b/2);
+ 	a[b]=e;
+ 	while(b>1&&a[g]>a[b])
+ 	{
+ 		swap(a[b],a[g]);
+ 		b=floor(b/2);
+ 		g=floor(b/2);
+	 }
+ }
+ void insert(int ar[],int v,int s)
+  {
+  	ar[s]=-100;
+  	heapdeckey(ar,s,v);
+  }
+  void minheapify(int ar[],int ele,int s)
+   {
+   	 int l,r,m;
+     l=2*ele;
+     r=2*ele+1;
+     m=ele;
+     if(l<=s&&ar[ele]>ar[l])
+      {
+      	m=l;
+	  }
+	if(r<=s&&ar[m]>ar[r])
+	 {
+	 	m=r;
+	 }
+    if(m!=ele)
+     {
+     	swap(ar[m],ar[ele]);
+     	minheapify(ar,m,s);
+	 }
+   }
+   int minimumheap(int ar[])
+    {
+      return ar[1];	
+	}
+ void getminheap(int ar[],int s)
+  {
+  	if(s=0)
+  	 {
+  	 	cout<<"no element in the tree";
+   }
+    else
+     {
+     	ar[1]=ar[s];
+     	s--;
+     	minheapify(ar,1,s);
+    }
+	 }
+  void builtheap(int ar[],int s)
+   {
+   	 int j=floor(s/2);
+   	 for(int i=j;i>=1;i--)
+   	  {
+   	  	minheapify(ar,1,s);
+		 }
+	} 
+}; 
+int main()
+ {
+            clrscr();
+	int ch,i,k,s;
+	heap y;
+	int ar[s];
+	do
+	 {
+	  cout<<"\n 1.decrease the key value \n 2.Insert the element  \n 3.minimum value \n 4.get minimum value \n "<<endl;
+	  cout<<"Enter your choice";
+	  cin>>ch;
+	  switch(ch)
+	   {
+	    case 1:
+		    cout<<"Enter the key value";
+		    cin>>i;
+		    cout<<"how much key is to be decreased";
+		    cin>>k;
+		    y.heapdeckey(ar,i,k);
+		    break;
+	    case 2:
+		    cout<<"Enter the value to be inserted";
+	        cin>>k;
+	        s++;
+	        y.insert(ar,k,s);
+	        break;
+	    case 3:
+		    cout<<"minimum element in heap"<<endl;
+		    y.minimumheap(a);
+		    cout<<endl;
+		    break;
+	    case 4:
+		    cout<<"get minimum element from heap"<<endl;
+		    y.getminheap(a,s);
+		    cout<<endl;
+		    break;
+	    default: cout<<"invalid choice"<<endl;
+	     }
+	      }while(ch!=0);
+       getch();
+       return 0;
+
+	 }
